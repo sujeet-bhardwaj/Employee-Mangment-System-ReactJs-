@@ -12,7 +12,8 @@ function App() {
 const [sortOrder, setSortOrder] = useState("asc");
 const [currentPage, setCurrentPage] = useState(1);
 const [selectedEmployee, setSelectedEmployee] = useState(null);
-console.log("selected",selectedEmployee);
+const [favoriteIds, setFavoriteIds] = useState([]);
+console.log("favouriteIds",favoriteIds);
   useEffect(() => {
   async function getEmployees() {
     try {
@@ -104,7 +105,7 @@ startIndex+employeesPerPage;
       </select>
       <h1>Employee Dashboard</h1>
         {sortedEmployees.slice(startIndex,endIndex).map((employee) => (
-        <EmployeeCard key={employee.id} employee={employee}  onSelect={setSelectedEmployee} />
+        <EmployeeCard key={employee.id} employee={employee}  faviourite={setFavoriteIds} favoriteIds2={favoriteIds} onSelect={setSelectedEmployee} />
       ))}
        <EmployeeDetails employee={selectedEmployee}></EmployeeDetails>
 
@@ -115,3 +116,6 @@ startIndex+employeesPerPage;
 }
 
 export default App;
+
+
+
